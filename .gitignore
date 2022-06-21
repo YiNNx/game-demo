@@ -58,3 +58,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/.vscode
+/Library
+/Log
+/Temp
+/UserSettings
+/Assembly-CSharp.csproj
+/game-demo.sln
