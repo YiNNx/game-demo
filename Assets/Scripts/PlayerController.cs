@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
             Vector2 position = transform.position;
             position.x+=moveX * speed * Time.deltaTime;
             transform.position=position;
-            
         }else{
             animator.SetInteger("running",0);
 
