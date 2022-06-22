@@ -8,16 +8,20 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 6f;
     public Rigidbody2D rb;
+    public Collider2D coll;
+    public Transform groundCheck;
+    public LayerMask grounder;
     public Animator animator;
     bool isJump;
+    bool onGround;
     bool isMove;
     float move;
-    int jumpCount;
+    public int jumpCount;
 
     // Start is called before the first frame update
     void Start()
     {
-    
+        jumpCount=0;
     }
 
     // Update is called once per frame
@@ -32,8 +36,15 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             isJump=true;
+            jumpCount+=1;
         }else{
             isJump=false;
+        }
+
+        onGround=Physics2D.OverlapCircle(groundCheck.position, 0.03f, grounder);
+
+        if(onGround){
+            jumpCount=0;
         }
 
         move=Input.GetAxisRaw("Horizontal");
@@ -52,12 +63,10 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (isJump)
+        if (isJump&&jumpCount<=1)
         {
-            animator.SetInteger("jumpforward",1);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }else{
-            animator.SetInteger("jumpforward",0);
         }
     }
 
@@ -70,10 +79,9 @@ public class PlayerController : MonoBehaviour
             animator.SetInteger("running",0);
         }
 
-        if (isJump)
+        if (isJump&&jumpCount<=2)
         {
             animator.SetInteger("jumpforward",1);
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }else{
             animator.SetInteger("jumpforward",0);
         }
