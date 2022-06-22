@@ -393,8 +393,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0018129349, y: -0.084314734}
-  m_Size: {x: 0.17202616, y: 0.3169449}
+  m_Offset: {x: 0.005807519, y: -0.084314734}
+  m_Size: {x: 0.15678525, y: 0.3169449}
   m_Direction: 0
 --- !u!95 &354503395
 Animator:
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e81d5a05c36b4243bee1f2cef18d6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 2
   jumpForce: 3
   rb: {fileID: 354503393}
   animator: {fileID: 354503395}
