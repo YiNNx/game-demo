@@ -9,9 +9,11 @@ public class movingcontroller : MonoBehaviour
     public float waitTime;
     public Transform[] movePos;
     private int i;
+    private Transform playerTransform;
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform.parent;
         i = 1;
     }
     void Update()
@@ -39,7 +41,22 @@ public class movingcontroller : MonoBehaviour
         }
     
     }
-
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            //将movingPlateform作为player的父对象
+            other.gameObject.transform.parent = gameObject.transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //将movingPlateform作为player的父对象
+            other.gameObject.transform.parent = playerTransform;
+        }
+    }
 }
 
  
